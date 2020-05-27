@@ -36,23 +36,6 @@ You can now list the pods to see there is two up and running:
 kubectl get pods
 ```
 
-### Exposing your pods to the internet
-
-On some platforms (for example Google Compute Engine) the kubectl command can integrate with your cloud provider to add a [public IP address](https://kubernetes.io/docs/concepts/services-networking/service/#publishing-services---service-types) for the pods,
-to do this run:
-
-```bash
-kubectl expose deployment my-nginx --port=80 --type=LoadBalancer
-```
-
-This should print the service that has been created, and map an external IP address to the service. Where to find this external IP address will depend on the environment you run in.  For instance, for Google Compute Engine the external IP address is listed as part of the newly created service and can be retrieved by running
-
-```bash
-kubectl get services
-```
-
-In order to access your nginx landing page, you also have to make sure that traffic from external IPs is allowed. Do this by opening a firewall to allow traffic on port 80.
-
 ### Cleanup
 
 To delete the two replicated containers, delete the deployment:
