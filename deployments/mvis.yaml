@@ -1,0 +1,43 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mvis
+spec:
+  replicas: 2
+  selector:
+   matchLabels:
+    app: mvis
+  template:
+    metadata:
+      labels:
+        app: mvis
+    spec:
+      imagePullSecrets:
+      - name: my-registry
+      containers:
+      - name: mvis
+        image: cm:latest
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 7870
+        - containerPort: 7171
+        - containerPort: 7871
+        env:
+        - name: JAVA_OPTS
+          value: "-DTYPE=MVCM -DCONSOLE_LOGGING=1 -DREDIS_HOST=redis"
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mvis
+spec:
+  type: LoadBalancer
+  ports:
+  - port: 7870
+    name: mvisport
+  - port: 7171
+    name: mvisrest
+  - port: 7871
+    name: mvismonitor
+  selector:
+    app: mvis
