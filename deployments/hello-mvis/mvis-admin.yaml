@@ -27,8 +27,10 @@ kind: Service
 metadata:
   name: mvisadmin
 spec:
-  type: LoadBalancer
-  ports:
-  - port: 7077
-  selector:
+  selector: 
     app: mvisadmin
+  type: NodePort  
+  ports:
+    - port: 7077
+      targetPort: 7077
+      nodePort: 32500
