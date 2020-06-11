@@ -18,6 +18,13 @@ You can list the pods to see what is up and running:
 kubectl get pods
 ```
 
+You can see whether demo-nginx is running or not using port-forward
+The port 80 is nginx default port and we are forwarding the traffic to 8080.
+
+```bash
+kubectl port-forward demo-nginx-5595f574b7-nk894 8080:80
+```
+
 You can also see the deployment that was created:
 
 ```bash

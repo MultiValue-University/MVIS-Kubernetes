@@ -1,2 +1,4 @@
 # MVIS-Kubernetes
-This repository captures the examples required for setting up MVIS in K8 
+This repository captures the examples required for creating a sample app in Kubernetes and also
+deploying MVIS into the Kuberntes cluster.
+
