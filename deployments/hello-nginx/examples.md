@@ -12,6 +12,11 @@ The [`kubectl create`](https://kubernetes.io/docs/reference/generated/kubectl/ku
 kubectl create deployment --image nginx demo-nginx
 ```
 
+You can verify whether the deployment is succesful or not 
+```
+kubectl get deployment
+```
+
 You can list the pods to see what is up and running:
 
 ```bash
